@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "question": "What percentage of the overall module mark does coursework contribute?",
+        "ground_truth_answer": "The coursework contributes 40% of the overall module mark.",
+        "expected_pages": [2, 3],
+        "reference_context": "The module is assessed via 60% Examination and 40% Coursework. This assignment contributes 40% of the overall module mark."
+    },
+    {
+        "id": 2,
+        "question": "What is the maximum number of members in each group?",
+        "ground_truth_answer": "Each group should consist of a maximum of 4 members.",
+        "expected_pages": [3],
+        "reference_context": "Each Group should consist of maximum of 4 members."
+    },
+    {
+        "id": 3,
+        "question": "What is required for the D1 final technical submission?",
+        "ground_truth_answer": "A comprehensive technical package containing modular Python source code, requirements.txt and env.example files, and a public GitHub repository link.",
+        "expected_pages": [4],
+        "reference_context": "This deliverable represents your primary engineering output. You are required to submit a comprehensive technical package to nLearn."
+    },
+    {
+        "id": 4,
+        "question": "What are the two main coursework deliverables?",
+        "ground_truth_answer": "D1 is the Final Technical Submission and D2 is the Demonstration and Viva.",
+        "expected_pages": [4, 5],
+        "reference_context": "There are two main deliverables for this assignment. Deliverable D1 and D2."
+    },
+    {
+        "id": 5,
+        "question": "How long should the demonstration video be?",
+        "ground_truth_answer": "The demonstration video must be a maximum of 5 minutes.",
+        "expected_pages": [5],
+        "reference_context": "YouTube video (max 5 minutes)."
+    },
+    {
+        "id": 6,
+        "question": "What processes must be demonstrated in the YouTube video?",
+        "ground_truth_answer": "The video must demonstrate Ingestion, Retrieval, Synthesis and Evaluation.",
+        "expected_pages": [5],
+        "reference_context": "Ingestion: Show the code processing a PDF. Retrieval: Show the system printing the retrieved chunks. Synthesis: Show the final grounded response. Evaluation: Briefly show your evaluation script running."
+    },
+    {
+        "id": 7,
+        "question": "What will students be asked during the Viva?",
+        "ground_truth_answer": "Students must explain a design pattern, modify a prompt or logic during the Viva, and defend their evaluation metrics and observed failures.",
+        "expected_pages": [5],
+        "reference_context": "Explain a specific design pattern used in your py files. Modify a small part of the prompt or logic on the fly. Defend your evaluation metrics."
+    },
+    {
+        "id": 8,
+        "question": "What is the weighting for Architectural Design and Agentic Loop?",
+        "ground_truth_answer": "Architectural Design and Agentic Loop contributes 25%.",
+        "expected_pages": [6],
+        "reference_context": "Architectural Design and Agentic Loop (25%)."
+    },
+    {
+        "id": 9,
+        "question": "What is the weighting for Data Pipeline and RAG?",
+        "ground_truth_answer": "Data Pipeline, Math Foundations and RAG contributes 30%.",
+        "expected_pages": [6],
+        "reference_context": "Data Pipeline, Math Foundations and RAG (30%)."
+    },
+    {
+        "id": 10,
+        "question": "What does the assignment say about plagiarism?",
+        "ground_truth_answer": "All work must be original. Students must reference their sources, and copying another person's work is considered plagiarism.",
+        "expected_pages": [7],
+        "reference_context": "All of your work must be your own. You must use references for your sources. To copy another person's work is viewed as plagiarism."
+    }
+]
