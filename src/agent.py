@@ -589,12 +589,12 @@ class ExplainableRAGAgent:
             state.reasoning_summaries.append(
                 {
                     "iteration": iteration,
-                "phase": phase,
-                "decision": "expand_retrieval",
-                "reason": (
-                    "Evidence did not satisfy the Dense, TF-IDF, "
-                    "BM25, or Hybrid relevance criteria."
-                ),
+                    "phase": phase,
+                    "decision": "expand_retrieval",
+                    "reason": (
+                        "Evidence did not satisfy the Dense, TF-IDF, "
+                        "BM25, or Hybrid relevance criteria."
+                    ),
                 }
             )
 
@@ -727,17 +727,16 @@ class ExplainableRAGAgent:
 
         serialized = []
 
-        for item in evidence:
+        for item in evidence or []:
 
             if not isinstance(item, dict):
                 continue
 
             metadata = self._get_metadata(item)
 
-            reasoning = item.get(
-                "reasoning_details",
-                {},
-            )
+            reasoning = item.get("reasoning_details")
+            if not isinstance(reasoning, dict):
+                reasoning = {}
 
             serialized.append(
                 {
@@ -746,35 +745,33 @@ class ExplainableRAGAgent:
                         "Unknown",
                     ),
                     "text": item.get("text", ""),
-                    "source": metadata.get(
+                    "source": item.get(
                         "source",
                         metadata.get(
-                            "file_name",
-                            "Unknown",
+                            "source",
+                            metadata.get("file_name", "Unknown"),
                         ),
                     ),
-                    "page": metadata.get(
+                    "page": item.get(
                         "page",
                         metadata.get(
-                            "page_number",
-                            "Unknown",
+                            "page",
+                            metadata.get("page_number", "Unknown"),
                         ),
                     ),
-                    "dense_similarity": item.get(
-                        "dense_similarity"
-                    ),
-                    "tfidf_similarity": item.get(
-                        "tfidf_similarity"
-                    ),
-                    "bm25_rank": item.get(
-                        "bm25_rank"
-                    ),
-                    "bm25_similarity": item.get(
-                        "bm25_similarity"
-                    ),
-                    "hybrid_score": item.get(
-                        "hybrid_score"
-                    ),
+                    # Retrieval ranks
+                    "dense_rank": item.get("dense_rank"),
+                    "sparse_rank": item.get("sparse_rank"),
+                    "bm25_rank": item.get("bm25_rank"),
+                    # Similarity values
+                    "dense_similarity": item.get("dense_similarity"),
+                    "tfidf_similarity": item.get("tfidf_similarity"),
+                    "bm25_similarity": item.get("bm25_similarity"),
+                    # Retrieval scores
+                    "dense_score": item.get("dense_score"),
+                    "sparse_score": item.get("sparse_score"),
+                    "hybrid_score": item.get("hybrid_score"),
+                    # Explainable reasoning
                     "reasoning_details": reasoning,
                 }
             )
@@ -888,16 +885,11 @@ class ExplainableRAGAgent:
                                 evidence,
                             )
 
-                state.evidence = self.serialize_evidence(
-                    evidence
-                )
+                state.evidence = self.serialize_evidence(evidence)
 
                 if self.is_synthesis_failure(answer):
-
                     state.status = "synthesis_failed"
-
                 else:
-
                     state.status = "evidence_found"
 
             else:
@@ -914,7 +906,7 @@ class ExplainableRAGAgent:
                 {
                     "action": "synthesize_answer",
                     "evidence_count": len(evidence),
-            }
+                }
             )
 
             # 4. Persist trace
