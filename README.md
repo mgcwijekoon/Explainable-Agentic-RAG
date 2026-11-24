@@ -175,3 +175,8 @@ These details help users inspect which passages supported an answer. They should
 ## Academic use
 
 This repository was developed as an academic project for the DS205.3 Data Science with Python coursework. Refer to the coursework brief and project report for assessment-specific details.
+
+## YouTube Demo Video
+
+[Watch the Explainable Agentic RAG Demo](https://youtu.be/-q4d7LgLWbw)
+
